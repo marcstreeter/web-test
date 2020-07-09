@@ -27,4 +27,14 @@ export class Restaurant extends Model<Restaurant> {
 
   @UpdatedAt
   updated_at: string
+
+  toJSON(): object {
+    return {
+      id: this.id,
+      name: this.name,
+      address: this.address,
+      created_at: this.created_at,
+      updated_at: this.updated_at
+    }
+  }
 }
