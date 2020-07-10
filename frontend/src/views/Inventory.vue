@@ -22,37 +22,35 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import axios from 'axios'
+  import { Component, Vue } from 'vue-property-decorator'
 
-  export default {
-    name: 'Inventory',
-    data: () => ({
-      inventory: [],
-      selected: [],
-      checkboxPosition: 'left',
-      columns: [
-        {
-          field: 'name',
-          label: 'Name',
-        }, {
-          field: 'start_time',
-          label: 'Starts',
-          width: '40',
-        }, {
-          field: 'end_time',
-          label: 'Ends',
-          width: '40',
-        }, {
-          field: 'seats',
-          label: 'Seats',
-          width: '5',
-          numeric: true
-        }
-      ]
-    }),
-    methods: {
-    },
+  @Component
+  export default class Inventory extends Vue {
+    private inventory = []
+    private selected = []
+    private checkboxPosition = 'left'
+    private columns = [
+      {
+        field: 'name',
+        label: 'Name',
+      }, {
+        field: 'start_time',
+        label: 'Starts',
+        width: '40',
+      }, {
+        field: 'end_time',
+        label: 'Ends',
+        width: '40',
+      }, {
+        field: 'seats',
+        label: 'Seats',
+        width: '5',
+        numeric: true
+      }
+    ]
+
     async created() {
       try {
         const response = await axios.get('http://localhost:9090/inventory?restaurant_id=1')
@@ -60,6 +58,6 @@
       } catch (error) {
         console.error(error)
       }
-    },
+    }
   }
 </script>
