@@ -39,6 +39,14 @@ export class Reservation extends Model<Reservation> {
     @UpdatedAt
     updated_at: string
 
+    public static async filtered(options: any = {}) {
+        // TODO validate options
+        // TODO fix signature
+        return Reservation.findAll({
+            where: { deleted_at: null, ...options }
+        })
+    }
+
     toJSON(): object {
         return {
             id: this.id,
