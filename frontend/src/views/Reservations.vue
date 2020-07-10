@@ -58,7 +58,6 @@
       this.addModalActive = true
     }
     public onAddModalClose(): void {
-      console.log("Closing")
       this.addModalActive = false
     }
     public async AddModalSave(name: string, time: string, seats: number) {
@@ -75,7 +74,6 @@
       } catch (error) {
         console.error(error)
       }
-
     }
     async created() {
       try {
