@@ -9,11 +9,8 @@ export class InventoryController {
     private async get(req: Request, res: Response) {
         const { restaurant_id } = req.query
         const options = !!restaurant_id ? { restaurant_id } : {}
-
         try {
-            const inventory = await Inventory.findAll({
-                where: { deleted_at: null, ...options }
-            })
+            const inventory = await Inventory.filtered(options)
             return res.json(inventory.map( row => row.toJSON()))
         } catch (error) {
             Logger.error(`failed to get inventory ${error}`)

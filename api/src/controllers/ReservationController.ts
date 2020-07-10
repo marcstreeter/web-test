@@ -9,11 +9,8 @@ export class ReservationController {
     private async get(req: Request, res: Response) {
         const { restaurant_id } = req.query
         const options = !!restaurant_id ? { restaurant_id } : {}
-
         try {
-            const reservations = await Reservation.findAll({
-                where: { deleted_at: null, ...options }
-            })
+            const reservations = await Reservation.filtered(options)
             return res.json(reservations.map( row => row.toJSON()))
         } catch (error) {
             Logger.error(`failed to get reservation ${error}`)
