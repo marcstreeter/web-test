@@ -62,7 +62,7 @@
                 this.loading = true
                 const response = await axios
                   .get('http://localhost:9090/slots?restaurant_id=1')
-                this.slots = response.data
+                this.slots = response.data.filter(slot => slot.inventory_id !== null)
             } catch (error) {
                 console.error(error)
             } finally {
