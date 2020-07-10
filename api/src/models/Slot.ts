@@ -38,13 +38,14 @@ export class Slot {
             inventory_id: id,
             restaurant_id,
           }
-          if (startMinute % 45 === 0) {
-            if (startHour % 23 === 0) {
+          if (startMinute !== 0 && startMinute % 45 === 0) { // increasing hour
+            if (startHour % 23 === 0) {  // looping hour
               startHour = 0
+            } else {
+              startHour += 1
+              startMinute = 0
             }
-            startHour += 1
-            startMinute = 0
-          } else {
+          } else { // increasing minute
             startMinute += 15
           }
         }
