@@ -14,7 +14,7 @@
                     </b-input>
                 </b-field>
                 <b-field label="Time">
-                    <b-select placeholder="Select a name" v-model="time">
+                    <b-select placeholder="Select a time" v-model="time">
                         <option
                           v-for="option in slots"
                           :value="option.time"
