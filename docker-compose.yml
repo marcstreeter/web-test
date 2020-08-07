@@ -8,6 +8,7 @@ services:
     ports:
       - "5432:5432"
   api:
+    image: marcstreeter/wizely-api
     build:
       context: .
       dockerfile: ./api/Dockerfile
@@ -27,6 +28,7 @@ services:
       - ./api:/app
       - /app/node_modules
   frontend:
+    image: marcstreeter/wizely-frontend
     build:
       context: .
       dockerfile: ./frontend/Dockerfile
